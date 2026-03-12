@@ -2,21 +2,13 @@
 
 A *tiny* Neovim plugin for automatic terminal theme synchronization via OSC 11.
 
-`OSC11.nvim` leverages Neovim's built-in capability to detect terminal theme changes. 
-When your terminal's theme changes (detected via mode 2031), Neovim often queries it for the new background color using an OSC (Operating System Command) sequence.
-The terminal then responds with an OSC 11 sequence containing the current background color. Neovim uses this OSC 11 response to automatically update its internal `background` option.
+When your terminal theme changes, Neovim detects it, asks the terminal for its new background color via OSC 11, and updates its internal `background` option based on whether that color is light or dark.
 
-This plugin taps into the same OSC 11 response that Neovim receives. It uses the *exact same strategy* as Neovim itself to calculate the background luminance and determine if the terminal theme is light or dark.
-The key difference is that while Neovim natively only adjusts the `background` variable, `OSC11.nvim` allows you to run *any* Lua function when your terminal switches between light and dark modes.
-This gives you fine-grained control beyond just Neovim's background color, enabling automatic colorscheme switching, statusline adjustments, or any other dynamic customization.
+`OSC11.nvim` hooks into that same OSC 11 response and uses the same light/dark detection logic as Neovim.  
+The difference is that instead of only updating `background`, it lets you run any Lua function when the terminal switches between light and dark modes.
 
 > [!NOTE]
-> This plugin is designed to work with terminals that support mode 2031 and OSC for reporting background color. Not all terminals support this feature.
-
-> [!WARNING]
-> For users running Neovim within `tmux`: At the time of writing, `tmux`'s latest stable release (v3.5a) contains a bug where it may continue to respond with the old colorscheme's background color after the terminal theme has changed. Detaching from your `tmux` session and reattaching is needed any time the theme changes for the change to be reflected inside neovim.
->
-> This bug has been fixed in `tmux`'s `master` branch. For seamless operation, it is recommended to build `tmux` from source from the `master` branch, or wait for a future stable release that includes this fix. 
+> This project is feature complete for its intended small scope of managing Git worktrees (create, delete, switch). While actively maintained (don't be scared if there are no commits for a long time), new features will be limited to improvements of existing functionality and simple additions within this scope. Pull requests are welcome as long as they align with these goals.
 
 ## Features
 
