@@ -8,7 +8,10 @@ When your terminal theme changes, Neovim detects it, asks the terminal for its n
 The difference is that instead of only updating `background`, it lets you run any Lua function when the terminal switches between light and dark modes.
 
 > [!NOTE]
-> This project is feature complete for its intended small scope of managing Git worktrees (create, delete, switch). While actively maintained (don't be scared if there are no commits for a long time), new features will be limited to improvements of existing functionality and simple additions within this scope. Pull requests are welcome as long as they align with these goals.
+> This project is feature complete for its intended small scope. While actively maintained (don't be scared if there are no commits for a long time), new features will be limited to improvements of existing functionality and simple additions within this scope. Pull requests are welcome as long as they align with these goals.
+
+> [!WARNING]
+> It’s recommended to set a colorscheme on startup outside of this plugin. That way, Neovim still has a valid colorscheme if your terminal does not send the required escape codes, if Neovim fails to retrieve them, or if you sometimes use a terminal that does not support this behavior.
 
 ## Features
 
